@@ -54,9 +54,8 @@ public class Bot extends TelegramLongPollingBot {
     String play_msg = "Congratulations, you played with your pet!!!" + Icon.BALL.get() + "\n";
     String wash_msg = "Congratulations, you washed your pet!!!" + Icon.WATTER.get() + "\n";
     int hungry = 50;
-    int clean = 20;
-    int happy = 0;
-    double life_cycle = 100*(0.5*hungry + 0.3*happy + 0.2*clean);
+    int clean = 100;
+    int happy = 100;
 
 
 
@@ -182,9 +181,9 @@ public class Bot extends TelegramLongPollingBot {
 
             timer.schedule( new TimerTask() {
                 public void run() {
-                    hungry -= 15;
-                    clean -= 10;
-                    happy -= 5;
+                    hungry -= 5;
+                    clean -= 7;
+                    happy -= 3;
                 }
             }, 0, 15*1000);
             if (hungry <= 10) {
@@ -196,6 +195,7 @@ public class Bot extends TelegramLongPollingBot {
             if (happy <= 10) {
                 sendMsg(message , "Please play with your pet");
             }
+            double life_cycle = 100*(0.5*hungry + 0.3*happy + 0.2*clean);
             if (life_cycle <= 0) {
                 sendMsg(message , "Your pet died, you bastard");
             }
@@ -228,9 +228,9 @@ public class Bot extends TelegramLongPollingBot {
                 if (text.equals("Feed")){
                     sendMsg(message , feed_msg);
                     sendPic(message,FEEDED.getFileId());
-                    hungry += 50;
-                    clean -= 30;
-                    happy += 30;
+                    hungry += 20;
+                    clean -= 6;
+                    happy += 7;
 
                 }
                 if (text.equals("Wash")){
@@ -238,15 +238,15 @@ public class Bot extends TelegramLongPollingBot {
                     sendPic(message,WASHED.getFileId());
                     hungry += 0;
                     clean += 50;
-                    happy -= 30;
+                    happy -= 5;
 
 
                 }
                 if (text.equals("Play")){
                     sendMsg(message , play_msg);
                     sendPic(message,PLAYFULL.getFileId());
-                    hungry -= 40;
-                    clean -= 40;
+                    hungry -= 10;
+                    clean -= 7;
                     happy += 50;
 
                 }
