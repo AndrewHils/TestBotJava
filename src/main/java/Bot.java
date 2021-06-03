@@ -40,7 +40,14 @@ public class Bot extends TelegramLongPollingBot {
             "Press 1 - to select Cute kitten" + Icon.CAT.get() + "\n" +
             "Press 2 - to select Adorable puppy" + Icon.DOG.get() + "\n";
 
-    String info_msg = "Главная задача этого бота - проинформировать людей и тд и тп.....";
+    String info_msg = "This bot is designed to inform everyone about the problem of stray animals in a playful way. \n" +
+            "And to teach children that any pet needs love and affection. \n" +
+            "Do not buy pets from the store - it's better to take them from the nearest animal shelter in your city.\n" +
+            "\n" +
+            "Kiev shelter numbers :\n" +
+            "+38 098 177 84 34\n" +
+            "+38 093 193 40 69\n" +
+            "Also you could search in Google and donate to the Animal shelter that you trust .\n";
     String default_msg = "Sorry, I am not good at handling a command like this." + Icon.CRYING.get() + "\n" +
             "Please use the buttons below or enter the \"/\" symbol for help\n";
     String feed_msg = "Congratulations, you fed your pet!!!" + Icon.PIZZA.get() + "\n";
