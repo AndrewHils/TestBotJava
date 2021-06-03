@@ -167,15 +167,17 @@ public class Bot extends TelegramLongPollingBot {
 
 
              */
-            if (hungry <= 40) {
+            if (hungry <= 10) {
                 sendMsg(message , "Please feed your pet" );
             }
-            if (clean <= 40) {
+            if (clean <= 10) {
                 sendMsg(message , "Please wash your pet");
             }
-            if (happy <= 40) {
+            if (happy <= 10) {
                 sendMsg(message , "Please play with your pet");
             }
+
+
             if(message.hasText()){
                 String text = message.getText();
 
@@ -225,6 +227,12 @@ public class Bot extends TelegramLongPollingBot {
 
                 }
                 if (text.equals("See")){
+                    if (hungry >= 100)
+                    {hungry = 100;}
+                    if (clean >= 100)
+                    {clean = 100;}
+                    if (happy >= 100)
+                    {happy = 100;}
                     sendMsg(message , "Hungry: " + String.valueOf(hungry) + "/100" + "\n" + "Clean: " + String.valueOf(clean) + "/100"+  "\n" + "Happy: " + String.valueOf(happy) + "/100");
 
                 }
