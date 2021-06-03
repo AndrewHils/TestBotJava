@@ -149,22 +149,42 @@ public class Bot extends TelegramLongPollingBot {
 
         //Нужно засунуть в отдельный класс/библиотеку со стикерами
         //КОТЫ
-        Sticker BOX = new Sticker();
-        BOX.setFileId("CAACAgIAAxkBAANSYLhdcsRyL3qKNvyHvFpIRYt3YgYAArgKAALxIcFJW5HP0kqIib0fBA");
-        Sticker FEEDED = new Sticker();
-        FEEDED.setFileId("CAACAgIAAxkBAANUYLhdowvbxvnoed9RwpgNmZpZfAADEw8AAj1mwEk-NMr2v9bSRh8E");
-        Sticker SED = new Sticker();
-        SED.setFileId("CAACAgIAAxkBAANWYLhd3Jk72PUMhPmtdNsqzlRCidMAArgOAAKF4MBJDEgugcixGMMfBA");
-        Sticker HUNGRY = new Sticker();
-        HUNGRY.setFileId("CAACAgIAAxkBAANZYLheCpP5nqWx0qMTx7nUoZSNr6cAAjoPAAI9JsFJT5GKUQzgXVMfBA");
-        Sticker DIRTY = new Sticker();
-        DIRTY.setFileId("CAACAgIAAxkBAANeYLheMfMFLkGW5I1wr7gO6zjYe4AAtoNAAIdMcFJO2jGVHVayMfBA");
-        Sticker PLAYFULL = new Sticker();
-        PLAYFULL.setFileId("CAACAgIAAxkBAANgYLheSLlRVBWd-jXW5TFACV6H6aAAAloSAAIt7cFJXVoBKw5BxcofBA");
-        Sticker SLEEP = new Sticker();
-        SLEEP.setFileId("CAACAgIAAxkBAANiYLheWSl5LWKXBjUd5gZMGTuPaRYAAh8OAAIEZMBJQ1j1bscJCUEfBA");
-        Sticker WASHED = new Sticker();
-        WASHED.setFileId("CAACAgIAAxkBAAIBZGC4ZKmjvobtDi2YVfekwtx5X01AAIeDgAC57AScFsQXAqnypTHwQ");
+
+            Sticker BOX = new Sticker();
+            BOX.setFileId("CAACAgIAAxkBAANSYLhdcsRyL3qKNvyHvFpIRYt3YgYAArgKAALxIcFJW5HP0kqIib0fBA");
+            Sticker FEEDED = new Sticker();
+            FEEDED.setFileId("CAACAgIAAxkBAANUYLhdowvbxvnoed9RwpgNmZpZfAADEw8AAj1mwEk-NMr2v9bSRh8E");
+            Sticker SED = new Sticker();
+            SED.setFileId("CAACAgIAAxkBAANWYLhd3Jk72PUMhPmtdNsqzlRCidMAArgOAAKF4MBJDEgugcixGMMfBA");
+            Sticker HUNGRY = new Sticker();
+            HUNGRY.setFileId("CAACAgIAAxkBAANZYLheCpP5nqWx0qMTx7nUoZSNr6cAAjoPAAI9JsFJT5GKUQzgXVMfBA");
+            Sticker DIRTY = new Sticker();
+            DIRTY.setFileId("CAACAgIAAxkBAANeYLheMfMFLkGW5I1wr7gO6zjYe4AAtoNAAIdMcFJO2jGVHVayMfBA");
+            Sticker PLAYFULL = new Sticker();
+            PLAYFULL.setFileId("CAACAgIAAxkBAANgYLheSLlRVBWd-jXW5TFACV6H6aAAAloSAAIt7cFJXVoBKw5BxcofBA");
+            Sticker SLEEP = new Sticker();
+            SLEEP.setFileId("CAACAgIAAxkBAANiYLheWSl5LWKXBjUd5gZMGTuPaRYAAh8OAAIEZMBJQ1j1bscJCUEfBA");
+            Sticker WASHED = new Sticker();
+            WASHED.setFileId("CAACAgIAAxkBAAECYCRguWUX2hkC3uFdcxyijGdLdUL9-gACHg4AAuf-wEnBbEFwKp8qUx8E");
+
+//СОБАКИ
+
+            Sticker BOX1 = new Sticker();
+            BOX1.setFileId("CAACAgIAAxkBAAECX-pguWJAOz9nPA2wvfwDAAHdtH_CH5AAApgNAALbNdBJyLPGs3kyNzofBA");
+            Sticker FEEDED1 = new Sticker();
+            FEEDED1.setFileId("CAACAgIAAxkBAAECYBRguWR3E_ysVCA_6gNMLLb65MuK2AAC8g0AAtG-yUmfgZyYuvi-Sh8E");
+            Sticker SED1 = new Sticker();
+            SED1.setFileId("CAACAgIAAxkBAAECX9lguV5_WnuJzfE92Qx8EpvRgabwEwACmA8AAsDKyUm6-9Qz-PQ18x8E");
+            Sticker HUNGRY1 = new Sticker();
+            HUNGRY1.setFileId("CAACAgIAAxkBAAECYBhguWSq0NvcJekiyu4tzvswdnYSUQACLw8AAjYkyEn-tFInuzlvGB8E");
+            Sticker DIRTY1 = new Sticker();
+            DIRTY1.setFileId("CAACAgIAAxkBAAECYBpguWS_OXvHSQu13imPEU0Yt-g7MQACYQ8AAiGLyEm_vDWqsBVhUR8E");
+            Sticker PLAYFULL1 = new Sticker();
+            PLAYFULL1.setFileId("CAACAgIAAxkBAAECYBxguWTR0jgBTspF02TelYP6UgqbbgAC8A4AAuKcyUkUAAHogFEkjuQfBA");
+            Sticker SLEEP1 = new Sticker();
+            SLEEP1.setFileId("CAACAgIAAxkBAAECYB5guWTlUJMscuMPuLi9LdYcW_-z1AACag4AAtWUyUn_GNYtEUoK7h8E");
+            Sticker WASHED1 = new Sticker();
+            WASHED1.setFileId("CAACAgIAAxkBAAECYCJguWT8Nc22vm0_mJVK6uzdgzFceAACJBEAAhctyUlhU7_15HkwSR8E");
 
 
         if (update.hasMessage()){
@@ -205,6 +225,8 @@ public class Bot extends TelegramLongPollingBot {
 
                 if (text.equals("/start")){
                     sendMsg(message , start_msg);
+                    sendPic(message, BOX.getFileId());
+                    sendPic(message, BOX1.getFileId());
 
 
                 }
@@ -219,13 +241,18 @@ public class Bot extends TelegramLongPollingBot {
                     cat_dog = false;
 
                 }
-                if (text.equals("Info")){
+                if (text.equals("Bot info")){
                     sendMsg(message , info_msg);
 
                 }
                 if (text.equals("Feed")){
                     sendMsg(message , feed_msg);
-                    sendPic(message,FEEDED.getFileId());
+                    if (cat_dog = true) {
+                        sendPic(message, FEEDED.getFileId());
+                    }
+                    else if (!cat_dog) {
+                        sendPic(message, FEEDED1.getFileId());
+                    }
                     hungry += 20;
                     clean -= 6;
                     happy += 7;
@@ -233,7 +260,12 @@ public class Bot extends TelegramLongPollingBot {
                 }
                 if (text.equals("Wash")){
                     sendMsg(message , wash_msg);
+                    if (cat_dog = true) {
                     sendPic(message,WASHED.getFileId());
+                    }
+                    if (!cat_dog) {
+                        sendPic(message,WASHED1.getFileId());
+                    }
                     hungry += 0;
                     clean += 50;
                     happy -= 5;
@@ -242,13 +274,18 @@ public class Bot extends TelegramLongPollingBot {
                 }
                 if (text.equals("Play")){
                     sendMsg(message , play_msg);
+                    if (cat_dog = true) {
                     sendPic(message,PLAYFULL.getFileId());
+                    }
+                    else if (!cat_dog) {
+                        sendPic(message,PLAYFULL1.getFileId());
+                    }
                     hungry -= 10;
                     clean -= 7;
                     happy += 50;
 
                 }
-                if (text.equals("See")){
+                if (text.equals("Health bar")){
                     if (hungry >= 100)
                     {hungry = 100;}
                     if (clean >= 100)
