@@ -29,7 +29,7 @@ public class Bot extends TelegramLongPollingBot {
     boolean cat_dog = true;
     String first_massage = null;
 
-    String start_msg = "ТЕСТТЕСТТЕСТТЕСТ!\n" +
+    String start_msg = "changed!\n" +
             "On the vastness of the worldwide network, did you somehow come across this particular bot?\n" +
             "Well then, let's get started!\n" +
             "Press 1 - to select Cute kitten" + Icon.CAT.get() + "\n" +
