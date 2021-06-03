@@ -34,25 +34,25 @@ public class Bot extends TelegramLongPollingBot {
     boolean cat_dog = true;
     String first_massage = null;
 
-    String start_msg = "changed!\n" +
+    String start_msg = "Hello!\n" +
             "On the vastness of the worldwide network, did you somehow come across this particular bot?\n" +
             "Well then, let's get started!\n" +
-            "Press 1 - to select Cute kitten" + Icon.CAT.get() + "\n" +
-            "Press 2 - to select Adorable puppy" + Icon.DOG.get() + "\n";
+            "Press 1 - to adopt Cute kitten" + Icon.CAT.get() + "\n" +
+            "Press 2 - to adopt Adorable puppy" + Icon.DOG.get() + "\n";
 
     String info_msg = "This bot is designed to inform everyone about the problem of stray animals in a playful way. \n" +
-            "And to teach children that any pet needs love and affection. \n" +
+            "Also to remind people that any creature needs love and affection. \n" +
             "Do not buy pets from the store - it's better to take them from the nearest animal shelter in your city.\n" +
             "\n" +
-            "Kiev shelter numbers :\n" +
+            "Kyiv shelter numbers :\n" +
             "+38 098 177 84 34\n" +
             "+38 093 193 40 69\n" +
             "Also you could search in Google and donate to the Animal shelter that you trust .\n";
     String default_msg = "Sorry, I am not good at handling a command like this." + Icon.CRYING.get() + "\n" +
             "Please use the buttons below or enter the \"/\" symbol for help\n";
-    String feed_msg = "Congratulations, you fed your pet!!!" + Icon.PIZZA.get() + "\n";
-    String play_msg = "Congratulations, you played with your pet!!!" + Icon.BALL.get() + "\n";
-    String wash_msg = "Congratulations, you washed your pet!!!" + Icon.WATTER.get() + "\n";
+    String feed_msg = "Congratulations, you fed your pet!" + Icon.PIZZA.get() + "\n";
+    String play_msg = "Congratulations, you played with your pet!" + Icon.BALL.get() + "\n";
+    String wash_msg = "Congratulations, you washed your pet!" + Icon.WATTER.get() + "\n";
     int hungry = 50;
     int clean = 100;
     int happy = 100;
@@ -101,8 +101,8 @@ public class Bot extends TelegramLongPollingBot {
         keyboardFirstRow.add(new KeyboardButton("Feed"));
         keyboardFirstRow.add(new KeyboardButton("Wash"));
         keyboardFirstRow.add(new KeyboardButton("Play"));
-        keyboardSecondRow.add(new KeyboardButton("Info"));
-        keyboardSecondRow.add(new KeyboardButton("See"));
+        keyboardSecondRow.add(new KeyboardButton("Health bar"));
+        keyboardSecondRow.add(new KeyboardButton("Bot info"));
 
         keyboardRowList.add(keyboardFirstRow);
         keyboardRowList.add(keyboardSecondRow);
@@ -196,9 +196,7 @@ public class Bot extends TelegramLongPollingBot {
                 sendMsg(message , "Please play with your pet");
             }
             double life_cycle = 100*(0.5*hungry + 0.3*happy + 0.2*clean);
-            if (life_cycle <= 0) {
-                sendMsg(message , "Your pet died, you bastard");
-            }
+
 
 
 
@@ -211,13 +209,13 @@ public class Bot extends TelegramLongPollingBot {
 
                 }
                 if (text.equals("1")){
-                    sendMsg(message , "You picked this awesome kitten!\n" + "Congrads!!!\n");
+                    sendMsg(message , "You picked this awesome kitten! Take a good care of it!\n" + "Congrads!\n");
                     cat_dog = true;
 
 
                 }
                 if (text.equals("2")){
-                    sendMsg(message , "You picked this awesome doggy!\n" + "Congrads!!!\n");
+                    sendMsg(message , "You picked this awesome doggy! Take a good care of it!\n" + "Congrads!\n");
                     cat_dog = false;
 
                 }
@@ -259,6 +257,9 @@ public class Bot extends TelegramLongPollingBot {
                     {happy = 100;}
                     sendMsg(message , "Hungry: " + String.valueOf(hungry) + "/100" + "\n" + "Clean: " + String.valueOf(clean) + "/100"+  "\n" + "Happy: " + String.valueOf(happy) + "/100");
 
+                }
+                if (life_cycle <= 0) {
+                    sendMsg(message , "Your pet died, you irresponsible bastard");
                 }
 
 
