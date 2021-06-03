@@ -22,6 +22,11 @@ import org.telegram.telegrambots.meta.exceptions.TelegramApiRequestException;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Locale;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class Bot extends TelegramLongPollingBot {
 
@@ -165,8 +170,16 @@ public class Bot extends TelegramLongPollingBot {
             if (happy >= 100);
                 happy = 100;
 
-
              */
+            Timer timer = new Timer();
+
+            timer.schedule( new TimerTask() {
+                public void run() {
+                    hungry -= 15;
+                    clean -= 10;
+                    happy -= 5;
+                }
+            }, 0, 15*1000);
             if (hungry <= 10) {
                 sendMsg(message , "Please feed your pet" );
             }
@@ -176,6 +189,10 @@ public class Bot extends TelegramLongPollingBot {
             if (happy <= 10) {
                 sendMsg(message , "Please play with your pet");
             }
+            if (life_cycle <= 0) {
+                sendMsg(message , "Your pet died, you bastard");
+            }
+
 
 
             if(message.hasText()){
