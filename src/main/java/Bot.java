@@ -7,38 +7,25 @@ import org.telegram.telegrambots.meta.api.objects.InputFile;
 import org.telegram.telegrambots.meta.api.objects.Message;
 import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.ReplyKeyboardMarkup;
-import org.telegram.telegrambots.meta.api.objects.replykeyboard.ReplyKeyboardRemove;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.KeyboardButton;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.KeyboardRow;
 import org.telegram.telegrambots.meta.api.objects.stickers.Sticker;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 import org.telegram.telegrambots.updatesreceivers.DefaultBotSession;
-
-import org.telegram.telegrambots.meta.api.objects.replykeyboard.InlineKeyboardMarkup;
-import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.InlineKeyboardButton;
-import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.KeyboardButton;
-import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
-import org.telegram.telegrambots.meta.exceptions.TelegramApiRequestException;
-
 import java.util.ArrayList;
 import java.util.List;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Locale;
 import java.util.Timer;
 import java.util.TimerTask;
 
 public class Bot extends TelegramLongPollingBot {
 
-    String StickerID;
     boolean cat_dog = false;
-    String first_massage = null;
 
     String start_msg = "Hello!\n" +
             "On the vastness of the worldwide network, did you somehow come across this particular bot?\n" +
             "Well then, let's get started!\n" +
-            "Choose cute kitten" + Icon.CAT.get() + "\n" +
-            "or adorable puppy" + Icon.DOG.get() + "\n";
+            "Send '1' - for adopt cute kitten" + Icon.CAT.get() + "\n" +
+            "Send '2' - for adopt adorable puppy" + Icon.DOG.get() + "\n";
 
     String info_msg = "This bot is designed to inform everyone about the problem of stray animals in a playful way. \n" +
             "Also to remind people that any creature needs love and affection. \n" +
@@ -49,7 +36,7 @@ public class Bot extends TelegramLongPollingBot {
             "+38 093 193 40 69\n" +
             "Also you could search in Google and donate to the Animal shelter that you trust.\n";
     String default_msg = "Sorry, I am not good at handling a command like this." + Icon.CRYING.get() + "\n" +
-            "Please use the buttons below or enter the \"/\" symbol for help\n";
+            "Please use the buttons below \n";
     String feed_msg = "Congratulations, you fed your pet!" + Icon.PIZZA.get() + "\n";
     String play_msg = "Congratulations, you played with your pet!" + Icon.BALL.get() + "\n";
     String wash_msg = "Congratulations, you washed your pet!" + Icon.WATTER.get() + "\n";
@@ -100,20 +87,16 @@ public class Bot extends TelegramLongPollingBot {
         List<KeyboardRow> keyboardRowList = new ArrayList<>();
         KeyboardRow keyboardFirstRow = new KeyboardRow();
         KeyboardRow keyboardSecondRow = new KeyboardRow();
-        KeyboardRow keyboardThirdRow = new KeyboardRow();
 
 
-        keyboardFirstRow.add(new KeyboardButton("Pick a kitty"));
-        keyboardFirstRow.add(new KeyboardButton("Pick a dog"));
-        keyboardSecondRow.add(new KeyboardButton("Feed"));
-        keyboardSecondRow.add(new KeyboardButton("Wash"));
-        keyboardSecondRow.add(new KeyboardButton("Play"));
-        keyboardThirdRow.add(new KeyboardButton("Health bar"));
-        keyboardThirdRow.add(new KeyboardButton("Bot info"));
+        keyboardFirstRow.add(new KeyboardButton("Feed"));
+        keyboardFirstRow.add(new KeyboardButton("Wash"));
+        keyboardFirstRow.add(new KeyboardButton("Play"));
+        keyboardSecondRow.add(new KeyboardButton("Health bar"));
+        keyboardSecondRow.add(new KeyboardButton("Bot info"));
 
         keyboardRowList.add(keyboardFirstRow);
         keyboardRowList.add(keyboardSecondRow);
-        keyboardRowList.add(keyboardThirdRow);
         replyKeyboardMarkup.setKeyboard(keyboardRowList);
     }
 
@@ -194,7 +177,10 @@ public class Bot extends TelegramLongPollingBot {
                     clean -= 7;
                     happy -= 3;
                 }
-            }, 0, 15*1000);
+            }, 0, 45*1000);
+
+            double life_cycle = 100*(0.5*hungry + 0.3*happy + 0.2*clean);
+
             if (hungry <= 5) {
                 sendMsg(message , "Please feed your pet" );
                 if (cat_dog) {
@@ -222,9 +208,6 @@ public class Bot extends TelegramLongPollingBot {
                     sendPic(message, SED1.getFileId());
                 }
             }
-            double life_cycle = 100*(0.5*hungry + 0.3*happy + 0.2*clean);
-
-
 
 
             if(message.hasText()){
@@ -240,13 +223,13 @@ public class Bot extends TelegramLongPollingBot {
 
 
                 }
-                if (text.equals("Pick a kitty")){
+                if (text.equals("1")){
                     sendMsg(message , "You picked this awesome kitten! Take a good care of it!\n" + "Congrads!\n");
                     cat_dog = true;
 
 
                 }
-                if (text.equals("Pick a dog")){
+                if (text.equals("2")){
                     sendMsg(message , "You picked this awesome doggy! Take a good care of it!\n" + "Congrads!\n");
                     cat_dog = false;
 
@@ -314,6 +297,9 @@ public class Bot extends TelegramLongPollingBot {
                         }
 
 
+                    }
+                    else {
+                        sendMsg(message, default_msg);
                     }
 
                 }
