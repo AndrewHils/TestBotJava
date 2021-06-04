@@ -31,7 +31,7 @@ import java.util.TimerTask;
 public class Bot extends TelegramLongPollingBot {
 
     String StickerID;
-    boolean cat_dog = true;
+    boolean cat_dog = false;
     String first_massage = null;
 
     String start_msg = "Hello!\n" +
@@ -78,14 +78,61 @@ public class Bot extends TelegramLongPollingBot {
         sendMessage.setReplyToMessageId(message.getMessageId());
         sendMessage.setText(text);
         try {
-            setButton(sendMessage);
-            execute(sendMessage);
+            if (text.equals("/start")){
+                setButton(sendMessage);
+                execute(sendMessage);
+            }
+            else {
+                setButton1(sendMessage);
+                execute(sendMessage);
+            }
         }catch (TelegramApiException e)
         {
             e.printStackTrace();
         }
     }
     public void setButton(SendMessage sendMessage)
+    {
+        ReplyKeyboardMarkup replyKeyboardMarkup = new ReplyKeyboardMarkup();
+
+        sendMessage.setReplyMarkup(replyKeyboardMarkup);
+        replyKeyboardMarkup.setSelective(true);
+        replyKeyboardMarkup.setResizeKeyboard(true);
+        replyKeyboardMarkup.setOneTimeKeyboard(true);
+
+        List<KeyboardRow> keyboardRowList = new ArrayList<>();
+        KeyboardRow keyboardFirstRow = new KeyboardRow();
+        KeyboardRow keyboardSecondRow = new KeyboardRow();
+
+        keyboardFirstRow.add(new KeyboardButton("1"));
+        keyboardFirstRow.add(new KeyboardButton("2"));
+
+        keyboardRowList.add(keyboardFirstRow);
+        keyboardRowList.add(keyboardSecondRow);
+        replyKeyboardMarkup.setKeyboard(keyboardRowList);
+
+        ReplyKeyboardMarkup replyKeyboardMarkup1 = new ReplyKeyboardMarkup();
+
+        sendMessage.setReplyMarkup(replyKeyboardMarkup1);
+        replyKeyboardMarkup1.setSelective(true);
+        replyKeyboardMarkup1.setResizeKeyboard(true);
+        replyKeyboardMarkup1.setOneTimeKeyboard(false);
+
+        List<KeyboardRow> keyboardRowList1 = new ArrayList<>();
+        KeyboardRow keyboardFirstRow1 = new KeyboardRow();
+        KeyboardRow keyboardSecondRow1 = new KeyboardRow();
+
+        keyboardFirstRow1.add(new KeyboardButton("Feed"));
+        keyboardFirstRow1.add(new KeyboardButton("Wash"));
+        keyboardFirstRow1.add(new KeyboardButton("Play"));
+        keyboardSecondRow1.add(new KeyboardButton("Health bar"));
+        keyboardSecondRow1.add(new KeyboardButton("Bot info"));
+
+        keyboardRowList.add(keyboardFirstRow1);
+        keyboardRowList.add(keyboardSecondRow1);
+        replyKeyboardMarkup.setKeyboard(keyboardRowList1);
+    }
+    public void setButton1(SendMessage sendMessage)
     {
         ReplyKeyboardMarkup replyKeyboardMarkup = new ReplyKeyboardMarkup();
 
@@ -108,6 +155,7 @@ public class Bot extends TelegramLongPollingBot {
         keyboardRowList.add(keyboardSecondRow);
         replyKeyboardMarkup.setKeyboard(keyboardRowList);
     }
+
 
 
     public void sendPic(Message message, String stickerId)
@@ -189,14 +237,7 @@ public class Bot extends TelegramLongPollingBot {
 
         if (update.hasMessage()){
             Message message = update.getMessage();
-            /*if (hungry >= 100)
-                hungry = 100;
-            if (clean >= 100);
-                clean = 100;
-            if (happy >= 100);
-                happy = 100;
 
-             */
             Timer timer = new Timer();
 
             timer.schedule( new TimerTask() {
@@ -206,14 +247,32 @@ public class Bot extends TelegramLongPollingBot {
                     happy -= 3;
                 }
             }, 0, 15*1000);
-            if (hungry <= 10) {
+            if (hungry <= 5) {
                 sendMsg(message , "Please feed your pet" );
+                if (cat_dog) {
+                    sendPic(message, HUNGRY.getFileId());
+                }
+                if (!cat_dog) {
+                    sendPic(message, HUNGRY1.getFileId());
+                }
             }
-            if (clean <= 10) {
+            if (clean <= 5) {
                 sendMsg(message , "Please wash your pet");
+                if (cat_dog) {
+                    sendPic(message, DIRTY.getFileId());
+                }
+                if (!cat_dog) {
+                    sendPic(message, DIRTY1.getFileId());
+                }
             }
-            if (happy <= 10) {
+            if (happy <= 5) {
                 sendMsg(message , "Please play with your pet");
+                if (cat_dog) {
+                    sendPic(message, SED.getFileId());
+                }
+                if (!cat_dog) {
+                    sendPic(message, SED1.getFileId());
+                }
             }
             double life_cycle = 100*(0.5*hungry + 0.3*happy + 0.2*clean);
 
@@ -225,8 +284,11 @@ public class Bot extends TelegramLongPollingBot {
 
                 if (text.equals("/start")){
                     sendMsg(message , start_msg);
+
+
                     sendPic(message, BOX.getFileId());
                     sendPic(message, BOX1.getFileId());
+
 
 
                 }
@@ -243,61 +305,72 @@ public class Bot extends TelegramLongPollingBot {
                 }
                 if (text.equals("Bot info")){
                     sendMsg(message , info_msg);
+                    sendMsg(message , String.valueOf(cat_dog));
 
                 }
-                if (text.equals("Feed")){
-                    sendMsg(message , feed_msg);
-                    if (cat_dog = true) {
-                        sendPic(message, FEEDED.getFileId());
-                    }
-                    else if (!cat_dog) {
-                        sendPic(message, FEEDED1.getFileId());
-                    }
-                    hungry += 20;
-                    clean -= 6;
-                    happy += 7;
+                if (text.equals("Feed")) {
+                        sendMsg(message, feed_msg);
+                        if (cat_dog) {
+                            sendPic(message, FEEDED.getFileId());
+                        }
+                        if (!cat_dog) {
+                            sendPic(message, FEEDED1.getFileId());
+                        }
+                        hungry += 20;
+                        clean -= 6;
+                        happy += 7;
 
                 }
-                if (text.equals("Wash")){
-                    sendMsg(message , wash_msg);
-                    if (cat_dog = true) {
-                    sendPic(message,WASHED.getFileId());
-                    }
-                    if (!cat_dog) {
-                        sendPic(message,WASHED1.getFileId());
-                    }
-                    hungry += 0;
-                    clean += 50;
-                    happy -= 5;
+                if (text.equals("Wash")) {
+                        sendMsg(message, wash_msg);
+                        if (cat_dog) {
+                            sendPic(message, WASHED.getFileId());
+                        }
+                        if (!cat_dog) {
+                            sendPic(message, WASHED1.getFileId());
+                        }
+                        hungry += 0;
+                        clean += 50;
+                        happy -= 5;
 
 
                 }
-                if (text.equals("Play")){
-                    sendMsg(message , play_msg);
-                    if (cat_dog = true) {
-                    sendPic(message,PLAYFULL.getFileId());
-                    }
-                    else if (!cat_dog) {
-                        sendPic(message,PLAYFULL1.getFileId());
-                    }
-                    hungry -= 10;
-                    clean -= 7;
-                    happy += 50;
+                if (text.equals("Play")) {
+                        sendMsg(message, play_msg);
+                        if (cat_dog) {
+                            sendPic(message, PLAYFULL.getFileId());
+                        }
+                        if (!cat_dog) {
+                            sendPic(message, PLAYFULL1.getFileId());
+                        }
+                        hungry -= 3;
+                        clean -= 7;
+                        happy += 50;
 
                 }
-                if (text.equals("Health bar")){
-                    if (hungry >= 100)
-                    {hungry = 100;}
-                    if (clean >= 100)
-                    {clean = 100;}
-                    if (happy >= 100)
-                    {happy = 100;}
-                    sendMsg(message , "Hungry: " + String.valueOf(hungry) + "/100" + "\n" + "Clean: " + String.valueOf(clean) + "/100"+  "\n" + "Happy: " + String.valueOf(happy) + "/100");
+                    if (text.equals("Health bar")) {
+                        if (hungry >= 100) {
+                            hungry = 100;
+                        }
+                        if (clean >= 100) {
+                            clean = 100;
+                        }
+                        if (happy >= 100) {
+                            happy = 100;
+                        }
+                        sendMsg(message, "Hungry: " + String.valueOf(hungry) + "/100" + "\n" + "Clean: " + String.valueOf(clean) + "/100" + "\n" + "Happy: " + String.valueOf(happy) + "/100");
+                        if (cat_dog) {
+                            sendPic(message, SLEEP.getFileId());
+                        }
+                        if (!cat_dog) {
+                            sendPic(message, SLEEP1.getFileId());
+                        }
+
+
+                    }
 
                 }
-                if (life_cycle <= 0) {
-                    sendMsg(message , "Your pet died, you irresponsible bastard");
-                }
+
 
 
             }
@@ -373,4 +446,4 @@ public class Bot extends TelegramLongPollingBot {
     }
 
 
-}
+
