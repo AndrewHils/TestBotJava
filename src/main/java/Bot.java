@@ -297,10 +297,9 @@ public class Bot extends TelegramLongPollingBot {
                         }
 
 
+
                     }
-                    else {
-                        sendMsg(message, default_msg);
-                    }
+
 
                 }
 
