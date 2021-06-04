@@ -130,17 +130,6 @@ public class Bot extends TelegramLongPollingBot {
         }
     }
 
-
-//    public void Heals_StaminaBar()
-//    {
-//        int heals = 100;
-//        int stamina = 100;
-//
-//        ScheduledExecutorService ex = Executors.newSingleThreadScheduledExecutor();
-//        Runnable runnable = null;
-//        ex.scheduleAtFixedRate(runnable, 0, 2, TimeUnit.HOURS);
-//    }
-
     @Override
     public String getBotUsername() {
         return "MyNewTest123456789_bot";
@@ -334,74 +323,6 @@ public class Bot extends TelegramLongPollingBot {
 
             }
         }
-
-        //Для получения FileID
-//        if (message.hasSticker())
-//        {
-//            StickerID = message.getSticker().getFileId();
-//            sendMsg(message,StickerID);
-//        }
-
-
-/*
-        //Как-то реализовать выбор между котом и псом
-
-        if (message.getText().equals("/start"))
-        {
-            sendMsg(message , start_msg);
-            first_massage = message.getText();
-        }
-
-
-
-        if (message.getText().equals("1")) {
-                    sendPic(message, BOX.getFileId());
-                    sendMsg(message, "You picked this awesome kitten!\n" + "Congrads!!!\n");
-                    cat_dog = true;
-
-                   }
-        else if (message.getText().equals("2")) {
-
-                sendMsg(message, "You picked this awesome doggy!\n" + "Congrads!!!\n");
-                cat_dog = false;
-
-        }
-
-
-
-
-
-        if (message != null && message.hasText() && cat_dog == true) {
-            switch (message.getText()) {
-                case "/info":
-                    sendMsg(message , info_msg);
-                    break;
-                case "/feed":
-                    sendMsg(message , feed_msg);
-                    sendPic(message,FEEDED.getFileId());
-                    break;
-                case "/wash":
-                    sendMsg(message , wash_msg);
-                    sendPic(message,WASHED.getFileId());
-                    break;
-                case "/play":
-                    sendMsg(message , play_msg);
-                    sendPic(message,PLAYFULL.getFileId());
-                    break;
-
-
-                case "/start":
-                    break;
-                case "1":
-                    break;
-                case "2":
-                    break;
-                default:
-                    sendMsg(message , default_msg);
-                    break;
-
-
- */
     }
 
 
