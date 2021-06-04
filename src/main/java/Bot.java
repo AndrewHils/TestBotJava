@@ -47,7 +47,7 @@ public class Bot extends TelegramLongPollingBot {
             "Kyiv shelter numbers :\n" +
             "+38 098 177 84 34\n" +
             "+38 093 193 40 69\n" +
-            "Also you could search in Google and donate to the Animal shelter that you trust .\n";
+            "Also you could search in Google and donate to the Animal shelter that you trust.\n";
     String default_msg = "Sorry, I am not good at handling a command like this." + Icon.CRYING.get() + "\n" +
             "Please use the buttons below or enter the \"/\" symbol for help\n";
     String feed_msg = "Congratulations, you fed your pet!" + Icon.PIZZA.get() + "\n";
@@ -253,7 +253,6 @@ public class Bot extends TelegramLongPollingBot {
                 }
                 if (text.equals("Bot info")){
                     sendMsg(message , info_msg);
-                    sendMsg(message , String.valueOf(cat_dog));
 
                 }
                 if (text.equals("Feed")) {
