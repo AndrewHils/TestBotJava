@@ -177,7 +177,7 @@ public class Bot extends TelegramLongPollingBot {
                     clean -= 7;
                     happy -= 3;
                 }
-            }, 0, 45*1000);
+            }, 0, 60*1000);
 
             double life_cycle = 100*(0.5*hungry + 0.3*happy + 0.2*clean);
 
@@ -190,6 +190,7 @@ public class Bot extends TelegramLongPollingBot {
                     sendPic(message, HUNGRY1.getFileId());
                 }
             }
+
             if (clean <= 5) {
                 sendMsg(message , "Please wash your pet");
                 if (cat_dog) {
@@ -299,6 +300,7 @@ public class Bot extends TelegramLongPollingBot {
 
 
                     }
+
 
 
                 }
