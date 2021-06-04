@@ -37,8 +37,8 @@ public class Bot extends TelegramLongPollingBot {
     String start_msg = "Hello!\n" +
             "On the vastness of the worldwide network, did you somehow come across this particular bot?\n" +
             "Well then, let's get started!\n" +
-            "Press 1 - to adopt Cute kitten" + Icon.CAT.get() + "\n" +
-            "Press 2 - to adopt Adorable puppy" + Icon.DOG.get() + "\n";
+            "Choose cute kitten" + Icon.CAT.get() + "\n" +
+            "or adorable puppy" + Icon.DOG.get() + "\n";
 
     String info_msg = "This bot is designed to inform everyone about the problem of stray animals in a playful way. \n" +
             "Also to remind people that any creature needs love and affection. \n" +
@@ -78,14 +78,11 @@ public class Bot extends TelegramLongPollingBot {
         sendMessage.setReplyToMessageId(message.getMessageId());
         sendMessage.setText(text);
         try {
-            if (text.equals("/start")){
+
                 setButton(sendMessage);
                 execute(sendMessage);
-            }
-            else {
-                setButton1(sendMessage);
-                execute(sendMessage);
-            }
+
+
         }catch (TelegramApiException e)
         {
             e.printStackTrace();
@@ -98,65 +95,27 @@ public class Bot extends TelegramLongPollingBot {
         sendMessage.setReplyMarkup(replyKeyboardMarkup);
         replyKeyboardMarkup.setSelective(true);
         replyKeyboardMarkup.setResizeKeyboard(true);
-        replyKeyboardMarkup.setOneTimeKeyboard(true);
-
-        List<KeyboardRow> keyboardRowList = new ArrayList<>();
-        KeyboardRow keyboardFirstRow = new KeyboardRow();
-        KeyboardRow keyboardSecondRow = new KeyboardRow();
-
-        keyboardFirstRow.add(new KeyboardButton("1"));
-        keyboardFirstRow.add(new KeyboardButton("2"));
-
-        keyboardRowList.add(keyboardFirstRow);
-        keyboardRowList.add(keyboardSecondRow);
-        replyKeyboardMarkup.setKeyboard(keyboardRowList);
-
-        ReplyKeyboardMarkup replyKeyboardMarkup1 = new ReplyKeyboardMarkup();
-
-        sendMessage.setReplyMarkup(replyKeyboardMarkup1);
-        replyKeyboardMarkup1.setSelective(true);
-        replyKeyboardMarkup1.setResizeKeyboard(true);
-        replyKeyboardMarkup1.setOneTimeKeyboard(false);
-
-        List<KeyboardRow> keyboardRowList1 = new ArrayList<>();
-        KeyboardRow keyboardFirstRow1 = new KeyboardRow();
-        KeyboardRow keyboardSecondRow1 = new KeyboardRow();
-
-        keyboardFirstRow1.add(new KeyboardButton("Feed"));
-        keyboardFirstRow1.add(new KeyboardButton("Wash"));
-        keyboardFirstRow1.add(new KeyboardButton("Play"));
-        keyboardSecondRow1.add(new KeyboardButton("Health bar"));
-        keyboardSecondRow1.add(new KeyboardButton("Bot info"));
-
-        keyboardRowList.add(keyboardFirstRow1);
-        keyboardRowList.add(keyboardSecondRow1);
-        replyKeyboardMarkup.setKeyboard(keyboardRowList1);
-    }
-    public void setButton1(SendMessage sendMessage)
-    {
-        ReplyKeyboardMarkup replyKeyboardMarkup = new ReplyKeyboardMarkup();
-
-        sendMessage.setReplyMarkup(replyKeyboardMarkup);
-        replyKeyboardMarkup.setSelective(true);
-        replyKeyboardMarkup.setResizeKeyboard(true);
         replyKeyboardMarkup.setOneTimeKeyboard(false);
 
         List<KeyboardRow> keyboardRowList = new ArrayList<>();
         KeyboardRow keyboardFirstRow = new KeyboardRow();
         KeyboardRow keyboardSecondRow = new KeyboardRow();
+        KeyboardRow keyboardThirdRow = new KeyboardRow();
 
-        keyboardFirstRow.add(new KeyboardButton("Feed"));
-        keyboardFirstRow.add(new KeyboardButton("Wash"));
-        keyboardFirstRow.add(new KeyboardButton("Play"));
-        keyboardSecondRow.add(new KeyboardButton("Health bar"));
-        keyboardSecondRow.add(new KeyboardButton("Bot info"));
+
+        keyboardFirstRow.add(new KeyboardButton("Pick a kitty"));
+        keyboardFirstRow.add(new KeyboardButton("Pick a dog"));
+        keyboardSecondRow.add(new KeyboardButton("Feed"));
+        keyboardSecondRow.add(new KeyboardButton("Wash"));
+        keyboardSecondRow.add(new KeyboardButton("Play"));
+        keyboardThirdRow.add(new KeyboardButton("Health bar"));
+        keyboardThirdRow.add(new KeyboardButton("Bot info"));
 
         keyboardRowList.add(keyboardFirstRow);
         keyboardRowList.add(keyboardSecondRow);
+        keyboardRowList.add(keyboardThirdRow);
         replyKeyboardMarkup.setKeyboard(keyboardRowList);
     }
-
-
 
     public void sendPic(Message message, String stickerId)
     {
@@ -292,13 +251,13 @@ public class Bot extends TelegramLongPollingBot {
 
 
                 }
-                if (text.equals("1")){
+                if (text.equals("Pick a kitty")){
                     sendMsg(message , "You picked this awesome kitten! Take a good care of it!\n" + "Congrads!\n");
                     cat_dog = true;
 
 
                 }
-                if (text.equals("2")){
+                if (text.equals("Pick a dog")){
                     sendMsg(message , "You picked this awesome doggy! Take a good care of it!\n" + "Congrads!\n");
                     cat_dog = false;
 
